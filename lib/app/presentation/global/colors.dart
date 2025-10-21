@@ -15,4 +15,18 @@ class AppColors {
   static const Color onSecondary = Color(0xFF2C2C2C);
   static const Color textPrimary = Color(0xFF2C2C2C);
   static const Color textSecondary = Color(0xFF666666);
+
+  // Colores de estado
+  static const Color success = Color(0xFF4CAF50);
+  static const Color error = Color(0xFFE57373);
+  static const Color warning = Color(0xFFFF9800);
+
+  // Colores específicos del diseño
+  static const Color accent = Color(0xFF4CAF50);
+  static const Color divider = Color(0xFFE0E0E0);
+  static const Color shadow = Color(0x1A000000);
+
+  // Colores de iconos
+  static const Color iconActive = Color(0xFFDD645F);
+  static const Color iconInactive = Color(0xFF999999);
 }

@@ -16,7 +16,7 @@ class CartPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Página de Inicio',
+          'Página del Carrito',
           style: TextStyle(fontSize: 20, color: AppColors.textPrimary),
         ),
       ),

@@ -16,7 +16,7 @@ class CategoriesPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Página de Inicio',
+          'Página de Categorias',
           style: TextStyle(fontSize: 20, color: AppColors.textPrimary),
         ),
       ),

@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Página de Inicio',
+          'Página de Mi Perfil',
           style: TextStyle(fontSize: 20, color: AppColors.textPrimary),
         ),
       ),

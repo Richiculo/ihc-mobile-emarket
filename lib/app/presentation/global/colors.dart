@@ -29,4 +29,9 @@ class AppColors {
   // Colores de iconos
   static const Color iconActive = Color(0xFFDD645F);
   static const Color iconInactive = Color(0xFF999999);
+
+  //Colores del gradiente del banner
+  static const Color gradientLight = Color(0xF2CFC8);
+  static const Color gradientTransition = Color(0xFFF8ECE4);
+  static const Color gradientDark = Color(0xB5D8B4);
 }

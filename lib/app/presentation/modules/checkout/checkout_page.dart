@@ -7,7 +7,7 @@ import '../../global/widgets/checkout_progress_indicator.dart';
 import '../../global/widgets/checkout_step_personal_info.dart';
 import '../../global/widgets/checkout_step_delivery.dart';
 import '../../global/widgets/checkout_step_payment.dart';
-import './checkout_succes_page.dart';
+import 'checkout_succes_page.dart';
 
 class CheckoutPage extends StatefulWidget {
   const CheckoutPage({super.key});

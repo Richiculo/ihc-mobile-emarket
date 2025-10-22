@@ -4,7 +4,7 @@ import '../../global/colors.dart';
 import '../../global/widgets/cart_item_card.dart';
 import '../../global/widgets/cart_summary.dart';
 import '../../global/widgets/empty_cart_widget.dart';
-import './checkout_page.dart';
+import '../checkout/checkout_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -23,7 +23,11 @@ class CartPage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+          },
         ),
         actions: [
           // Badge con cantidad de items
@@ -88,7 +92,6 @@ class CartPage extends StatelessWidget {
               // Resumen y botones
               CartSummary(
                 onCheckout: () {
-                  // TODO: Implementar checkout
                   _showCheckoutDialog(context);
                 },
                 onClearCart: () {
@@ -121,9 +124,7 @@ class CartPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder:
-                          (context) =>
-                              const CheckoutPage(), // ✅ Navegar al checkout
+                      builder: (context) => const CheckoutPage(),
                     ),
                   );
                 },

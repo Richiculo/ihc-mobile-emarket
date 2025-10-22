@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../data/services/local/user_service.dart';
 import '../../global/colors.dart';
+import '../../global/widgets/profile_header.dart';
+import '../../global/widgets/profile_info_section.dart';
+import '../../global/widgets/address_section.dart';
+import '../../global/widgets/profile_actions_section.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -9,16 +14,62 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('YeskiMarket'),
+        title: const Text(
+          'Perfil',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onPrimary,
         elevation: 0,
-      ),
-      body: const Center(
-        child: Text(
-          'Página de Inicio',
-          style: TextStyle(fontSize: 20, color: AppColors.textPrimary),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // TODO: Navigate to settings
+            },
+          ),
+        ],
+      ),
+      body: ListenableBuilder(
+        listenable: UserService(),
+        builder: (context, child) {
+          final user = UserService().currentUser;
+
+          if (user == null) {
+            return const Center(child: Text('No hay usuario logueado'));
+          }
+
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                // Header con avatar y nombre
+                ProfileHeader(user: user),
+
+                const SizedBox(height: 24),
+
+                // Información personal
+                ProfileInfoSection(user: user),
+
+                const SizedBox(height: 16),
+
+                // Direcciones
+                AddressSection(user: user),
+
+                const SizedBox(height: 16),
+
+                // Acciones adicionales
+                const ProfileActionsSection(),
+
+                const SizedBox(height: 80), // Espacio para bottom navigation
+              ],
+            ),
+          );
+        },
       ),
     );
   }

@@ -18,13 +18,19 @@ class AppColors {
 
   // Colores de estado
   static const Color success = Color(0xFF4CAF50);
-  static const Color error = Color(0xFFE57373);
+  static const Color onSuccess = Color(0xFFFFFFFF);
   static const Color warning = Color(0xFFFF9800);
+  static const Color onWarning = Color(0xFFFFFFFF);
+  static const Color error = Color(0xFFF44336);
+  static const Color onError = Color(0xFFFFFFFF);
+  static const Color info = Color(0xFF2196F3);
+  static const Color onInfo = Color(0xFFFFFFFF);
 
   // Colores específicos del diseño
   static const Color accent = Color(0xFF4CAF50);
   static const Color divider = Color(0xFFE0E0E0);
   static const Color shadow = Color(0x1A000000);
+  static const Color border = Color(0xFFE0E0E0);
 
   // Colores de iconos
   static const Color iconActive = Color(0xFFDD645F);
@@ -34,4 +40,8 @@ class AppColors {
   static const Color gradientLight = Color(0xF2CFC8);
   static const Color gradientTransition = Color(0xFFF8ECE4);
   static const Color gradientDark = Color(0xB5D8B4);
+
+  // Colores de verificación específicos
+  static const Color verified = success;
+  static const Color unverified = Color(0xFF9E9E9E);
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../global/colors.dart';
+import '../../../data/services/local/cart_service.dart';
+import '../../../domain/models/product.dart';
 
 class RepeatOrderSection extends StatelessWidget {
   const RepeatOrderSection({super.key});
@@ -126,33 +128,53 @@ class RepeatOrderSection extends StatelessWidget {
                             color: AppColors.primary,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.shopping_cart_outlined,
-                                size: 16,
-                                color: AppColors.onPrimary,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                'Agregar',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppColors.onPrimary,
-                                  fontWeight: FontWeight.w600,
+                        GestureDetector(
+                          onTap: () {
+                            // Crear producto mock para agregar
+                            final product = Product(
+                              id: 'repeat_${index + 1}',
+                              title: 'Yogurt Natural',
+                              category: 'Lácteos y Huevos',
+                              price: 11.50,
+                              originalPrice: 15.00,
+                              discountPercentage: 23,
+                              imageUrl:
+                                  'https://imgs.search.brave.com/_yi32uNjh-F1WxK-k36ouH8iiav8Y22INqYGBrzJqc8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mYXJt/YWNvcnAuY29tL2Nk/bi9zaG9wL2ZpbGVz/Lzc3NzI5MDUwMDI2/MzRfNzAweDcwMC5q/cGc_dj0xNzE0NDQx/MzE4',
+                              rating: 4.0,
+                              reviewCount: 24,
+                            );
+
+                            CartService().addProduct(product);
+
+                            // Mostrar feedback
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '${product.title} agregado al carrito',
                                 ),
+                                backgroundColor: Colors.green,
+                                duration: const Duration(seconds: 2),
+                                behavior: SnackBarBehavior.floating,
                               ),
-                            ],
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Text(
+                              'Agregar',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.onPrimary,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ],

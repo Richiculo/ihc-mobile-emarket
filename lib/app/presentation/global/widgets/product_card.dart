@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../domain/models/product.dart';
 import '../../global/colors.dart';
+import '../../../data/services/local/cart_service.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -170,7 +171,42 @@ class ProductCard extends StatelessWidget {
                         const SizedBox(width: 8),
                         // Botón agregar (derecha)
                         GestureDetector(
-                          onTap: onAddToCart,
+                          onTap: () {
+                            // Agregar al carrito
+                            CartService().addProduct(product);
+
+                            // Mostrar feedback visual
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle,
+                                      color: AppColors.onPrimary,
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        '${product.title} agregado al carrito',
+                                        style: TextStyle(
+                                          color: AppColors.onPrimary,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                backgroundColor: Colors.green,
+                                duration: const Duration(seconds: 2),
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            );
+
+                            // Ejecutar callback si existe
+                            onAddToCart?.call();
+                          },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12,

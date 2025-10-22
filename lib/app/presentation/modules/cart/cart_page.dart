@@ -4,6 +4,7 @@ import '../../global/colors.dart';
 import '../../global/widgets/cart_item_card.dart';
 import '../../global/widgets/cart_summary.dart';
 import '../../global/widgets/empty_cart_widget.dart';
+import './checkout_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -106,14 +107,30 @@ class CartPage extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: const Text('Proceder al pago'),
-            content: const Text(
-              'Esta funcionalidad se implementará próximamente.',
-            ),
+            title: const Text('Proceder al Pago'),
+            content: const Text('¿Deseas continuar con la compra?'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('OK'),
+                child: const Text('Cancelar'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Navegar al checkout
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) =>
+                              const CheckoutPage(), // ✅ Navegar al checkout
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                ),
+                child: const Text('Continuar'),
               ),
             ],
           ),

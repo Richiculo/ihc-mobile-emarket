@@ -23,15 +23,14 @@ class ProfilePage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+          },
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // TODO: Navigate to settings
-            },
-          ),
+          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
         ],
       ),
       body: ListenableBuilder(

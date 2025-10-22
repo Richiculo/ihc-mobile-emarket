@@ -168,23 +168,19 @@ class CheckoutSuccessPage extends StatelessWidget {
 
   void _navigateToHome(BuildContext context) {
     // Navegar al home y limpiar todo el stack
-    Navigator.of(context).pushNamedAndRemoveUntil(
-      '/', // Ruta del home
-      (Route<dynamic> route) => false,
-    );
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }
 
   void _navigateToOrders(BuildContext context) {
     // Primero navegar al home, luego a orders
-    Navigator.of(context).pushNamedAndRemoveUntil(
-      '/', // Ruta del home
-      (Route<dynamic> route) => false,
-    );
+    Navigator.of(
+      context,
+    ).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
 
     // Pequeño delay para que el home se cargue y luego cambiar a orders
     Future.delayed(const Duration(milliseconds: 100), () {
-      // Aquí necesitarías acceso al MainNavigation para cambiar el tab
-      // Por ahora solo mostramos un mensaje
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Navegar a "Mis Pedidos"'),

@@ -80,6 +80,7 @@ class OrderDetailPage extends StatelessWidget {
 
   Widget _buildStatusCard() {
     return Container(
+      width: double.infinity, // ✅ Asegurar que tome todo el ancho
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: order.status.color.withOpacity(0.1),
@@ -87,26 +88,45 @@ class OrderDetailPage extends StatelessWidget {
         border: Border.all(color: order.status.color.withOpacity(0.3)),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // ✅ Centrar verticalmente
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // ✅ Centrar horizontalmente
+        mainAxisSize: MainAxisSize.min, // ✅ Tamaño mínimo necesario
         children: [
-          Icon(order.status.icon, size: 48, color: order.status.color),
+          // ✅ Centrar el ícono específicamente
+          Center(
+            child: Icon(order.status.icon, size: 48, color: order.status.color),
+          ),
           const SizedBox(height: 12),
-          Text(
-            order.status.label,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: order.status.color,
+
+          // ✅ Centrar el título
+          Center(
+            child: Text(
+              order.status.label,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: order.status.color,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 4),
-          Text(
-            order.statusDescription,
-            style: TextStyle(fontSize: 14, color: order.status.color),
-            textAlign: TextAlign.center,
+
+          // ✅ Centrar la descripción
+          Center(
+            child: Text(
+              order.statusDescription,
+              style: TextStyle(fontSize: 14, color: order.status.color),
+              textAlign: TextAlign.center,
+            ),
           ),
+
           if (order.estimatedDelivery != null &&
               order.status == OrderStatus.inProgress) ...[
             const SizedBox(height: 12),
+
+            // ✅ El tiempo estimado ya estaba bien centrado
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
@@ -120,6 +140,7 @@ class OrderDetailPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: order.status.color,
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           ],
@@ -231,7 +252,7 @@ class OrderDetailPage extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(
+              child: Image.asset(
                 item.product.imageUrl,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {

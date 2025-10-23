@@ -46,18 +46,29 @@ class ProductCard extends StatelessWidget {
             // Imagen con badge de descuento
             Stack(
               children: [
-                Container(
-                  height: 180,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                    ),
-                    image: DecorationImage(
-                      image: NetworkImage(product.imageUrl),
-                      fit: BoxFit.cover,
-                    ),
+                // ✅ Reemplazar todo el Container de la imagen por esto:
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
+                  child: Image.asset(
+                    product.imageUrl,
+                    height: 180,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        height: 180,
+                        width: double.infinity,
+                        color: AppColors.surfaceVariant,
+                        child: Icon(
+                          Icons.image_not_supported,
+                          color: AppColors.textSecondary,
+                          size: 40,
+                        ),
+                      );
+                    },
                   ),
                 ),
                 // Badge de descuento

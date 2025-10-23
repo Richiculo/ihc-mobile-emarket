@@ -138,8 +138,7 @@ class RepeatOrderSection extends StatelessWidget {
                               price: 11.50,
                               originalPrice: 15.00,
                               discountPercentage: 23,
-                              imageUrl:
-                                  'https://imgs.search.brave.com/_yi32uNjh-F1WxK-k36ouH8iiav8Y22INqYGBrzJqc8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mYXJt/YWNvcnAuY29tL2Nk/bi9zaG9wL2ZpbGVz/Lzc3NzI5MDUwMDI2/MzRfNzAweDcwMC5q/cGc_dj0xNzE0NDQx/MzE4',
+                              imageUrl: 'assets/images/yogurt.png',
                               rating: 4.0,
                               reviewCount: 24,
                             );

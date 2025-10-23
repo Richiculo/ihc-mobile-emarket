@@ -44,4 +44,18 @@ class AppColors {
   // Colores de verificación específicos
   static const Color verified = success;
   static const Color unverified = Color(0xFF9E9E9E);
+
+  // Colores para el order
+  static const Color preparing = Color(0xFF9C27B0);
+  static const Color onPreparing = Color(0xFFFFFFFF);
+  static const Color inProgress = Color(0xFFFFC107);
+  static const Color onProgress = Color(0xFF000000);
+  static const Color pending = Color(0xFFFF9800);
+  static const Color onPending = Color(0xFFFFFFFF);
+  static const Color confirmed = Color(0xFF2196F3);
+  static const Color onConfirmed = Color(0xFFFFFFFF);
+  static const Color delivered = Color(0xFF4CAF50);
+  static const Color onDelivered = Color(0xFFFFFFFF);
+  static const Color cancelled = Color(0xFFF44336);
+  static const Color onCancelled = Color(0xFFFFFFFF);
 }

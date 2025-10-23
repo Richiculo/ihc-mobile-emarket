@@ -54,9 +54,6 @@ class OrdersPage extends StatelessWidget {
 
           return Column(
             children: [
-              // Header con estadísticas
-              _buildOrdersHeader(ordersService),
-
               // Lista de pedidos
               Expanded(
                 child: ListView.builder(
@@ -78,97 +75,6 @@ class OrdersPage extends StatelessWidget {
             ],
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildOrdersHeader(OrdersService ordersService) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadow.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildStatCard(
-              'Total Pedidos',
-              ordersService.orders.length.toString(),
-              Icons.shopping_bag_outlined,
-              AppColors.primary,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: _buildStatCard(
-              'En Proceso',
-              ordersService
-                  .getOrdersByStatus(OrderStatus.inProgress)
-                  .length
-                  .toString(),
-              Icons.local_shipping_outlined,
-              AppColors.warning,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: _buildStatCard(
-              'Entregados',
-              ordersService
-                  .getOrdersByStatus(OrderStatus.delivered)
-                  .length
-                  .toString(),
-              Icons.check_circle_outline,
-              AppColors.success,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildStatCard(
-    String title,
-    String value,
-    IconData icon,
-    Color color,
-  ) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: color, size: 20),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
-          ),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 10,
-              color: color,
-              fontWeight: FontWeight.w500,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }

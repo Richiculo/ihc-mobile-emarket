@@ -43,14 +43,21 @@ class CategoryProductCard extends StatelessWidget {
                     borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(12),
                     ),
-                    child: Container(
+                    child: Image.asset(
+                      product.imageUrl,
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(product.imageUrl),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: double.infinity,
+                          color: AppColors.surfaceVariant,
+                          child: Icon(
+                            Icons.image_not_supported,
+                            color: AppColors.textSecondary,
+                            size: 32,
+                          ),
+                        );
+                      },
                     ),
                   ),
 

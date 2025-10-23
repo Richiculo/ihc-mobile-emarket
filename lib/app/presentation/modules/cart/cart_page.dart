@@ -130,6 +130,7 @@ class CartPage extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
+                  foregroundColor: AppColors.onPrimary,
                 ),
                 child: const Text('Continuar'),
               ),

@@ -53,8 +53,9 @@ class EmptyCartWidget extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {
                 // Cambiar a pestaña Home
-                final navigator = Navigator.of(context);
-                navigator.popUntil((route) => route.isFirst);
+                Navigator.of(
+                  context,
+                ).pushNamedAndRemoveUntil('/', (route) => false);
               },
               icon: const Icon(Icons.shopping_bag_outlined),
               label: const Text('Explorar productos'),

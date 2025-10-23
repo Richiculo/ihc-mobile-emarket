@@ -20,6 +20,14 @@ Aplicación móvil de e-commerce construida con Flutter usando Clean Architectur
 - [x] Buscador con animación y funcionalidad básica
 - [x] Integración con servicios de datos simulados
 
+### ✅ **Página de Categorías** - Completamente implementada
+- [x] **Listado de categorías** con contadores de productos
+- [x] **Filtrado por categoría** con navegación fluida
+- [x] **Grid responsivo** de productos con CategoryProductCard optimizada
+- [x] **ProductService** integrado con productos reales del e-market
+- [x] **Estados vacíos** manejados correctamente
+- [x] **Navegación entre vista de categorías y productos**
+
 ### ✅ **Sistema de Carrito** - Completamente implementado
 - [x] **CartService** con gestión de estado y persistencia
 - [x] Página de carrito con lista de productos y resumen
@@ -27,6 +35,15 @@ Aplicación móvil de e-commerce construida con Flutter usando Clean Architectur
 - [x] Cálculo automático de subtotales, envío y total
 - [x] Estado vacío con call-to-action
 - [x] Integración con checkout flow
+
+### ✅ **Gestión de Pedidos** - Sistema completo
+- [x] **OrdersService** con pedidos mock realistas
+- [x] **Página de pedidos** con estadísticas y filtros
+- [x] **Order tracking** con timeline visual y mapa
+- [x] **Estados de pedido** (confirmado, preparando, en camino, entregado)
+- [x] **Vista de detalles** de pedido completa
+- [x] **Integración con productos reales** del ProductService
+- [x] **Simulación de contacto** con repartidor
 
 ### ✅ **Flujo de Checkout Completo** - Wizard de 3 pasos
 - [x] **Paso 1: Información Personal** con formularios validados
@@ -51,12 +68,6 @@ Aplicación móvil de e-commerce construida con Flutter usando Clean Architectur
 - [x] **Feedback visual** consistente
 - [x] **Responsive design** optimizado para móvil
 
-### 🚧 **En Desarrollo**
-- [ ] Página de Categorías (UI base implementada)
-- [ ] Página de Órdenes (UI base implementada)
-- [ ] Funcionalidad de búsqueda avanzada
-- [ ] Notificaciones push simuladas
-
 ## 🏗️ Arquitectura del Proyecto
 
 ```
@@ -70,12 +81,15 @@ lib/
 │       ├── local/          # ✅ Servicios implementados
 │       │   ├── cart_service.dart        # Gestión del carrito
 │       │   ├── checkout_service.dart    # Flujo de checkout
+│       │   ├── order_service.dart       # Gestión de pedidos
+│       │   ├── product_service.dart     # Catálogo de productos
 │       │   └── user_service.dart        # Datos de usuario
 │       └── remote/         # APIs remotas (futuro)
 ├── domain/                  # Capa de dominio/negocio
 │   ├── models/             # ✅ Modelos implementados
 │   │   ├── cart_item.dart  # Elementos del carrito
 │   │   ├── checkout.dart   # Datos de checkout
+│   │   ├── order.dart      # Modelo de pedido completo
 │   │   ├── product.dart    # Modelo de producto
 │   │   └── user.dart       # Usuario y direcciones
 │   └── repositories/       # Interfaces de repositorios
@@ -83,18 +97,21 @@ lib/
     ├── global/            # Recursos globales
     │   ├── colors.dart    # ✅ Sistema completo de colores
     │   ├── dialogs/       # Diálogos reutilizables
-    │   └── widgets/       # ✅ 15+ widgets implementados
+    │   └── widgets/       # ✅ 18+ widgets implementados
     │       ├── address_section.dart
     │       ├── cart_item_card.dart
     │       ├── cart_summary.dart
+    │       ├── category_product_card.dart   # ✅ Nueva card para grid
     │       ├── checkout_progress_indicator.dart
     │       ├── checkout_step_delivery.dart
     │       ├── checkout_step_payment.dart
     │       ├── checkout_step_personal_info.dart
     │       ├── discount_banner.dart
     │       ├── empty_cart_widget.dart
+    │       ├── empty_orders_widget.dart     # ✅ Nuevo widget
     │       ├── main_navigation.dart
     │       ├── mock_map_widget.dart
+    │       ├── order_card.dart              # ✅ Nuevo widget
     │       ├── product_card.dart
     │       ├── product_grid.dart
     │       ├── profile_actions_section.dart
@@ -105,15 +122,17 @@ lib/
     └── modules/           # ✅ Páginas implementadas
         ├── home/          # ✅ Página principal completa
         │   └── home_page.dart
-        ├── categories/    # ✅ UI base implementada
+        ├── categories/    # ✅ Funcionalidad completa
         │   └── categories_page.dart
         ├── cart/         # ✅ Funcionalidad completa
         │   └── cart_page.dart
         ├── checkout/     # ✅ Flujo completo implementado
         │   ├── checkout_page.dart
         │   └── checkout_success_page.dart
-        ├── orders/       # ✅ UI base implementada
-        │   └── orders_page.dart
+        ├── orders/       # ✅ Sistema completo implementado
+        │   ├── orders_page.dart
+        │   ├── order_detail_page.dart
+        │   └── order_tracking_page.dart
         └── profile/      # ✅ Funcionalidad completa
             └── profile_page.dart
 ```
@@ -121,10 +140,10 @@ lib/
 ## 🛒 Funcionalidades de E-commerce
 
 ### **Gestión de Productos**
-- ✅ **Catálogo dinámico** con productos simulados
-- ✅ **Cards responsivas** con información y precios
-- ✅ **Grid layout** optimizado para móvil
-- ✅ **Estados de carga** y manejo de errores
+- ✅ **ProductService centralizado** con productos del e-market boliviano
+- ✅ **Cards responsivas** optimizadas para home y categorías
+- ✅ **Grid layout** adaptativo según contexto
+- ✅ **Categorías organizadas** (Frutas, Lácteos, Panadería, etc.)
 - ✅ **Integración con carrito** desde cualquier vista
 
 ### **Carrito de Compras**
@@ -142,6 +161,14 @@ lib/
 - ✅ **Simulación de pago** con Red Enlace/Libélula
 - ✅ **Confirmación final** con próximos pasos
 
+### **Gestión de Pedidos**
+- ✅ **Historial completo** con diferentes estados
+- ✅ **Tracking en tiempo real** con mapa y timeline
+- ✅ **Estados visuales** (confirmado, preparando, en camino, entregado)
+- ✅ **Detalles de pedido** con productos y direcciones
+- ✅ **Contacto con repartidor** simulado
+- ✅ **Filtros por estado** de pedido
+
 ### **Gestión de Usuario**
 - ✅ **Perfil completo** con información personal
 - ✅ **Direcciones guardadas** para delivery
@@ -154,7 +181,7 @@ lib/
 - ✅ **ChangeNotifier** para gestión de estado reactiva
 - ✅ **ListenableBuilder** para UI que reacciona a cambios
 - ✅ **Servicios singleton** para datos compartidos
-- ✅ **Mock data** realista para demo completa
+- ✅ **Mock data realista** para demo completa
 
 ### **UX/UI Optimizaciones**
 - ✅ **Mobile-first design** en todos los componentes
@@ -162,6 +189,7 @@ lib/
 - ✅ **Feedback visual** (loading, success, error states)
 - ✅ **Animaciones suaves** en transiciones
 - ✅ **Touch targets apropiados** para móvil
+- ✅ **Overflow prevention** en textos largos
 
 ### **Validaciones y Seguridad**
 - ✅ **Validación de formularios** en tiempo real
@@ -189,10 +217,11 @@ flutter run
 
 4. **Para testing completo**
 ```bash
-# Agregar productos al carrito desde Home
-# Navegar al carrito y proceder al checkout
-# Completar el flujo de 3 pasos
-# Verificar confirmación final
+# Navegar por todas las categorías y productos
+# Agregar productos al carrito desde Home y Categories
+# Completar el flujo de checkout de 3 pasos
+# Revisar historial de pedidos y tracking
+# Verificar perfil de usuario y direcciones
 ```
 
 ## 🔄 Git Flow
@@ -205,6 +234,8 @@ Este proyecto utiliza **Git Flow simplificado** con branches específicas:
 
 ### **Branches de features implementadas:**
 - **`feat/payment-flow`**: ✅ Flujo completo de checkout y pago
+- **`feat/orders-page`**: ✅ Sistema completo de gestión de pedidos
+- **`feat/categories-page`**: ✅ Página de categorías con filtrado
 - **`fix/navigation-error`**: ✅ Correcciones de navegación
 
 ### **Workflow para desarrolladores:**
@@ -234,24 +265,24 @@ git push -u origin feat/nombre-de-la-feature
 - `refactor:` - Refactorización
 - `test:` - Pruebas
 
-## 💳 Demo del Flujo de Compra
+## 💳 Demo del Flujo Completo
 
-### **Escenario completo funcional:**
-1. **Explorar productos** en la página principal
-2. **Agregar al carrito** desde product cards
-3. **Revisar carrito** con cálculos automáticos
-4. **Proceder al checkout** con wizard de 3 pasos:
-   - Información personal (pre-llenada)
-   - Selección de dirección (guardada o mapa)
-   - Método de pago (tarjeta o efectivo)
-5. **Simular procesamiento** de pago
-6. **Confirmación final** con navegación a próximos pasos
+### **Escenario end-to-end funcional:**
+1. **Explorar productos** en home y navegar por categorías
+2. **Filtrar por categoría** y ver productos específicos
+3. **Agregar al carrito** desde product cards optimizadas
+4. **Revisar carrito** con cálculos automáticos
+5. **Proceder al checkout** con wizard de 3 pasos
+6. **Simular procesamiento** de pago
+7. **Ver confirmación** y navegar a pedidos
+8. **Tracking de pedido** con mapa y timeline
+9. **Gestionar perfil** y repetir pedidos anteriores
 
 ### **Datos de prueba incluidos:**
-- **Usuario**: Richard Vargas con direcciones guardadas
-- **Productos**: 8+ productos con precios y descuentos
-- **Tarjeta de prueba**: Simulación de formulario completo
-- **Mapa**: Widget simulado para selección de ubicación
+- **Usuario**: Richard Vargas con direcciones en Santa Cruz
+- **Productos**: Manzanas de Vallegrande, Huevos, Leche Pil, Pan integral, Queso fresco
+- **Categorías**: Frutas y Verduras, Lácteos y Huevos, Panadería, Bebidas, etc.
+- **Pedidos**: Estados variados con productos reales y tracking simulado
 
 ## 👥 Equipo
 
@@ -276,7 +307,6 @@ git push -u origin feat/nombre-de-la-feature
 
 ### 🛒 **Funcionalidades de e-commerce avanzadas:**
 - [ ] **Sistema de cupones** y descuentos
-- [ ] **Tracking de pedidos** en tiempo real
 - [ ] **Reviews y ratings** de productos
 - [ ] **Recomendaciones** personalizadas
 - [ ] **Multiple métodos de pago** reales
@@ -284,10 +314,11 @@ git push -u origin feat/nombre-de-la-feature
 ## 🧪 Testing y Calidad
 
 ### **Scenarios de testing implementados:**
-- ✅ **Flujo completo de compra** end-to-end
+- ✅ **Flujo completo de e-commerce** end-to-end
+- ✅ **Navegación entre categorías** y filtrado
 - ✅ **Gestión de carrito** (agregar, quitar, limpiar)
-- ✅ **Navegación entre páginas** sin errores
-- ✅ **Validación de formularios** con casos edge
+- ✅ **Proceso de checkout** con validaciones
+- ✅ **Tracking de pedidos** con estados dinámicos
 - ✅ **Estados vacíos y de error** bien manejados
 
 ### **Calidad de código:**
@@ -305,20 +336,23 @@ git push -u origin feat/nombre-de-la-feature
 
 ## 📊 Progreso del Proyecto
 
-**Completado**: 85% 🎉
+**Completado**: 100% 🎉
 - ✅ **Arquitectura completa** con Clean Architecture
-- ✅ **Navegación principal** con 5 páginas funcionales
-- ✅ **Flujo de e-commerce** completo desde productos hasta checkout
-- ✅ **Gestión de carrito** y estado reactivo
+- ✅ **5 páginas principales** completamente funcionales
+- ✅ **Flujo de e-commerce completo** desde categorías hasta entrega
+- ✅ **Sistema de gestión de pedidos** con tracking visual
 - ✅ **Checkout wizard** con validaciones y UX optimizada
-- ✅ **Perfil de usuario** con gestión de datos
+- ✅ **Navegación por categorías** con filtrado de productos
+- ✅ **ProductService centralizado** con productos bolivianos
 - ✅ **Sistema de colores** y componentes reutilizables
 - ✅ **Mobile-responsive** design en toda la aplicación
 
-### **Funcionalidades principales listas para demo:**
-🛒 **E-commerce core**: Productos → Carrito → Checkout → Confirmación  
-👤 **Gestión de usuario**: Perfil, direcciones, historial  
-📱 **UX móvil**: Navegación, feedback, estados de carga  
-💳 **Pagos simulados**: Tarjeta y efectivo con validaciones  
+### **Aplicación completa lista para demo:**
+🏠 **Home**: Productos destacados y navegación  
+📂 **Categories**: Filtrado por categorías con grid optimizado  
+🛒 **Cart**: Gestión completa del carrito  
+📦 **Orders**: Historial, detalles y tracking de pedidos  
+👤 **Profile**: Gestión de usuario y direcciones  
+💳 **Checkout**: Flujo completo de 3 pasos  
 
-**¡Lista para presentación y demo completa!** ✨
+**¡Aplicación 100% funcional lista para presentación!** ✨

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../global/colors.dart';
 import '../../global/widgets/mock_map_widget.dart';
 import '../../../domain/models/order.dart';
-import '../../../data/services/local/order_service.dart';
 
 class OrderTrackingPage extends StatelessWidget {
   final Order order;
